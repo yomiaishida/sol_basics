@@ -16,13 +16,17 @@ contract SimpleStorage {
         myFavoriteNumber = _favoriteNumber;
     }
 
+    mapping(string => uint256) public nameToFavoriteNumber;
+
     function retrieve() public view returns (uint256) {
        return myFavoriteNumber;
     }
 
     function addPerson(string memory _name, uint _favoriteNumber) public  {
         listOfPeole.push(Person(_favoriteNumber, _name));
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
+
 
      function listOfPeoplesSize() public view returns (uint){
         return listOfPeole.length;
