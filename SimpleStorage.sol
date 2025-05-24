@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+contract SimpleStorage {
+    // variable to store the data
+    uint256  myFavoriteNumber;
+
+    struct Person{
+        uint256 favoriteNumber;
+        string name;
+    }
+
+    Person[] public listOfPeole;
+
+    function store(uint256 _favoriteNumber) public {
+        myFavoriteNumber = _favoriteNumber;
+    }
+
+    function retrieve() public view returns (uint256) {
+       return myFavoriteNumber;
+    }
+
+    function addPerson(string memory _name, uint _favoriteNumber) public  {
+        listOfPeole.push(Person(_favoriteNumber, _name));
+    }
+
+     function listOfPeoplesSize() public view returns (uint){
+        return listOfPeole.length;
+    }
+
+}
